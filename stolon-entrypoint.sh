@@ -9,7 +9,7 @@ echo $IP
 SS_PID=$!
 
 /usr/local/bin/stolon-proxy --cluster-name db --store-backend consul \
-  --store-endpoints $CONSUL_HTTP_ADDR --listen-address $IP \
+  --store-endpoints $CONSUL_HTTP_ADDR --listen-address 0.0.0.0 \
   --port 5432 &
 SP_PID=$!
 
