@@ -3,6 +3,9 @@
 IP=$( hostname -i | awk '{print $1}' )
 echo $IP
 
+id=$( echo $EXT_HOSTNAME | awk -F '.' '{ print $1 }' )
+echo $id
+
 /usr/local/bin/stolon-sentinel --cluster-name db --store-backend consul \
   --store-endpoints $CONSUL_HTTP_ADDR --listen-address $IP \
   --port 6431 &
@@ -22,6 +25,7 @@ gosu postgres /usr/local/bin/stolon-keeper --cluster-name db \
   --pg-repl-username $PG_REPL_USERNAME --pg-su-password $PG_SU_PASSWORD \
   --store-backend consul \
   --store-endpoints $CONSUL_HTTP_ADDR --listen-address $IP \
+  --id $id
   --port 5431 \
   --pg-listen-address $IP --pg-port 7432 &
 SK_PID=$!

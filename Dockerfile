@@ -4,6 +4,7 @@ ENV CONSUL_HTTP_ADDR=
 ENV PG_REPL_USERNAME=
 ENV PG_REPL_PASSWORD=
 ENV PG_SU_PASSWORD=
+ENV EXT_HOSTNAME=
 
 COPY stolon-entrypoint.sh /usr/local/bin/stolon-entrypoint.sh
 COPY stolon-v0.3.0-linux-amd64.tar.gz_SHA256SUMS /usr/local/bin/stolon-v0.3.0-linux-amd64.tar.gz_SHA256SUMS
