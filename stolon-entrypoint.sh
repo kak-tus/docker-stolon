@@ -25,7 +25,7 @@ gosu postgres /usr/local/bin/stolon-keeper --cluster-name db \
   --pg-repl-username $PG_REPL_USERNAME --pg-su-password $PG_SU_PASSWORD \
   --store-backend consul \
   --store-endpoints $CONSUL_HTTP_ADDR --listen-address $IP \
-  --id $id
+  --id $id \
   --port 5431 \
   --pg-listen-address $IP --pg-port 7432 &
 SK_PID=$!
