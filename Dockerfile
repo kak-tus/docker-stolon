@@ -21,6 +21,7 @@ RUN apt-get update \
   && cp ./stolon-v0.3.0-linux-amd64/stolon-keeper ./ \
   && cp ./stolon-v0.3.0-linux-amd64/stolon-proxy ./ \
   && cp ./stolon-v0.3.0-linux-amd64/stolon-sentinel ./ \
+  && cp ./stolon-v0.3.0-linux-amd64/stolonctl ./ \
   && rm -rf ./stolon-v0.3.0-linux-amd64 \
   && rm stolon-v0.3.0-linux-amd64.tar.gz stolon-v0.3.0-linux-amd64.tar.gz_SHA256SUMS \
 
