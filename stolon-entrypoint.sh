@@ -3,7 +3,7 @@
 IP=$( hostname -i | awk '{print $1}' )
 echo $IP
 
-id=$( echo $EXT_HOSTNAME | awk -F '.' '{ print $1 }' | sed 's/[^a-z\d\_]/_/g' )
+id=$( echo $EXT_HOSTNAME | awk -F '.' '{ print $1 }' | sed 's/[^a-z0-9\_]/_/g' )
 echo $id
 
 /usr/local/bin/stolon-sentinel --cluster-name db --store-backend consul \
