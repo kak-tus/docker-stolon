@@ -27,7 +27,11 @@ RUN \
   && cp ./stolon-v0.3.0-linux-amd64/stolonctl ./ \
 
   && rm -rf ./stolon-v0.3.0-linux-amd64 \
-  && rm stolon-v0.3.0-linux-amd64.tar.gz stolon-v0.3.0-linux-amd64.tar.gz_SHA256SUMS
+  && rm stolon-v0.3.0-linux-amd64.tar.gz stolon-v0.3.0-linux-amd64.tar.gz_SHA256SUMS \
+
+  && localedef -i ru_RU -c -f UTF-8 -A /usr/share/locale/locale.alias ru_RU.UTF-8
+
+ENV LANG=ru_RU.UTF-8
 
 RUN \
   apt-get remove -y curl ca-certificates && rm -rf /var/lib/apt/lists/*
