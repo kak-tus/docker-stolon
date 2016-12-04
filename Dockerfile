@@ -36,4 +36,7 @@ ENV LANG=ru_RU.UTF-8
 RUN \
   apt-get remove -y curl ca-certificates && rm -rf /var/lib/apt/lists/*
 
+ENV SET_CONTAINER_TIMEZONE=true
+ENV CONTAINER_TIMEZONE=Europe/Moscow
+
 ENTRYPOINT /usr/local/bin/stolon-entrypoint.sh
