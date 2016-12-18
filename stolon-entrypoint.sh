@@ -39,7 +39,7 @@ gosu postgres /usr/local/bin/stolon-keeper --cluster-name db \
   --pg-listen-address $IP --pg-port 7432 >/proc/1/fd/1 2>/proc/1/fd/2 &
 SK_PID=$!
 
-trap "kill $SS_PID ; kill $SP_PID ; kill $SK_PID" 2
+trap "kill $SS_PID ; kill $SP_PID ; kill $SK_PID" TERM
 
 wait $SS_PID
 wait $SP_PID
