@@ -44,8 +44,30 @@ SK_PID=$!
 
 echo "Pids sentinel $SS_PID proxy $SP_PID keeper $SK_PID"
 
-trap "kill $SS_PID ; kill $SP_PID ; kill $SK_PID" TERM
+trap "kill $SS_PID ; kill $SP_PID ; kill $SK_PID" TERM INT
 
-wait $SS_PID
-wait $SP_PID
-wait $SK_PID
+while true; do
+  kill -0 "$SS_PID"
+  if [ "$?" = "0" ]; then
+    sleep 5
+  else
+    echo "Exited sentinel"
+    exit
+  fi
+
+  kill -0 "$SP_PID"
+  if [ "$?" = "0" ]; then
+    sleep 5
+  else
+    echo "Exited proxy"
+    exit
+  fi
+
+  kill -0 "$SK_PID"
+  if [ "$?" = "0" ]; then
+    sleep 5
+  else
+    echo "Exited keeper"
+    exit
+  fi
+done
