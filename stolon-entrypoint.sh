@@ -9,8 +9,10 @@ else
   echo "Container timezone not modified"
 fi
 
-IP=$( hostname -i | awk '{print $1}' )
-echo $IP
+if [ -z "$STOLON_IP" ]; then
+  STOLON_IP=$( hostname -i | awk '{print $1}' )
+  echo "IP detected $STOLON_IP"
+fi
 
 id=$( echo $EXT_HOSTNAME | awk -F '.' '{ print $1 }' | sed 's/[^a-z0-9\_]/_/g' )
 echo $id
@@ -38,7 +40,7 @@ gosu postgres /usr/local/bin/stolon-keeper  --cluster-name $STOLON_CLUSTER_NAME 
   --store-backend consul \
   --store-endpoints $CONSUL_HTTP_ADDR \
   --uid $id \
-  --pg-listen-address $IP \
+  --pg-listen-address $STOLON_IP \
   --pg-port 7432 &
 SK_PID=$!
 
