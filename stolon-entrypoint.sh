@@ -12,6 +12,7 @@ fi
 id=$( echo $EXT_HOSTNAME | awk -F '.' '{ print $1 }' | sed 's/[^a-z0-9\_]/_/g' )
 echo $id
 
+mkdir -p /var/lib/postgresql/data
 chown postgres:postgres /var/lib/postgresql/data
 
 if [ "$STOLON_SERVICE" = "sentinel" ]; then
